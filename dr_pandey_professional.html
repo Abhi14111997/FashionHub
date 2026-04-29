@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Prasanna Kumar Pandey | Best Orthopedic Specialist in Prayagraj</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1a6b6b;
+  --primary-dark: #125050;
+  --primary-light: #e8f5f5;
+  --accent: #e8a000;
+  --text: #1a1a2e;
+  --text-light: #5a6070;
+  --border: #e4e8ee;
+  --white: #ffffff;
+  --bg: #f7fafa;
+  --bg2: #f0f8f8;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── TOP BAR ── */
+.top-bar {
+  background: var(--primary);
+  color: white;
+  font-size: 0.82rem;
+  padding: 9px 0;
+}
+.top-bar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.top-bar-left { display:flex; align-items:center; gap:24px; }
+.top-bar-item { display:flex; align-items:center; gap:7px; opacity:0.92; }
+.top-bar-item span { font-size:1rem; }
+.top-bar-right { display:flex; gap:12px; align-items:center; }
+.top-social {
+  width:30px; height:30px;
+  background:rgba(255,255,255,0.15);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.85rem;
+  cursor:pointer;
+  transition:background 0.2s;
+  text-decoration:none;
+  color:white;
+}
+.top-social:hover { background:rgba(255,255,255,0.3); }
+
+/* ── NAVBAR ── */
+nav {
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.nav-logo { display:flex; align-items:center; gap:14px; text-decoration:none; }
+.logo-icon {
+  width:48px; height:48px;
+  background: var(--primary);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem;
+  flex-shrink:0;
+}
+.logo-text-main {
+  font-family:'Playfair Display', serif;
+  font-size:1.15rem;
+  font-weight:700;
+  color:var(--primary);
+  line-height:1.2;
+}
+.logo-text-sub {
+  font-size:0.72rem;
+  color:var(--text-light);
+  font-weight:600;
+  letter-spacing:0.5px;
+}
+.nav-links { display:flex; align-items:center; gap:6px; }
+.nav-links a {
+  text-decoration:none;
+  color:var(--text);
+  font-size:0.88rem;
+  font-weight:600;
+  padding:8px 14px;
+  border-radius:6px;
+  transition:all 0.2s;
+}
+.nav-links a:hover { color:var(--primary); background:var(--primary-light); }
+.nav-links a.active { color:var(--primary); }
+.nav-cta {
+  background:var(--primary);
+  color:white !important;
+  padding:10px 22px !important;
+  border-radius:50px !important;
+  font-weight:700 !important;
+  transition:all 0.3s !important;
+  white-space:nowrap;
+}
+.nav-cta:hover { background:var(--primary-dark) !important; transform:translateY(-1px); box-shadow:0 6px 20px rgba(26,107,107,0.35) !important; }
+
+/* ── HERO SLIDER ── */
+.hero {
+  position:relative;
+  height: 92vh;
+  min-height: 600px;
+  overflow:hidden;
+}
+.slide {
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity 0.8s ease;
+  display:flex;
+  align-items:center;
+}
+.slide.active { opacity:1; }
+.slide-bg {
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  transform:scale(1.05);
+  transition:transform 6s ease;
+}
+.slide.active .slide-bg { transform:scale(1); }
+
+/* Slide 1 — teal gradient with doctor photo side */
+.slide-1 .slide-bg {
+  background: linear-gradient(135deg, #0d4f4f 0%, #1a8080 50%, #0f5c5c 100%);
+}
+/* Slide 2 */
+.slide-2 .slide-bg {
+  background: linear-gradient(135deg, #1a3a6b 0%, #0f4f8f 50%, #0d2a5a 100%);
+}
+/* Slide 3 */
+.slide-3 .slide-bg {
+  background: linear-gradient(135deg, #2d1a6b 0%, #4a2fa0 50%, #1e1050 100%);
+}
+
+.slide-overlay {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+}
+.slide-content {
+  position:relative;
+  z-index:2;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 60px;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:40px;
+}
+.slide-text {
+  color:white;
+}
+.slide-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.3);
+  padding:7px 18px;
+  border-radius:50px;
+  font-size:0.78rem;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.9);
+  margin-bottom:22px;
+}
+.slide-badge::before {
+  content:'';
+  width:8px; height:8px;
+  background:#4dffd2;
+  border-radius:50%;
+  animation:blink 1.5s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.slide-text h1 {
+  font-family:'Playfair Display', serif;
+  font-size:clamp(2rem,4vw,3.6rem);
+  font-weight:700;
+  line-height:1.15;
+  margin-bottom:16px;
+  color:white;
+}
+.slide-text h1 em { font-style:italic; color:#7fffd4; }
+.slide-text p {
+  font-size:1.05rem;
+  line-height:1.75;
+  color:rgba(255,255,255,0.8);
+  margin-bottom:32px;
+  max-width:480px;
+  font-weight:400;
+}
+.slide-bullets { margin-bottom:36px; display:flex; flex-direction:column; gap:10px; }
+.slide-bullet {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:0.9rem;
+  color:rgba(255,255,255,0.85);
+  font-weight:600;
+}
+.slide-bullet::before {
+  content:'✓';
+  width:22px; height:22px;
+  background:rgba(77,255,210,0.2);
+  border:1px solid rgba(77,255,210,0.5);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:0.72rem;
+  color:#4dffd2;
+  flex-shrink:0;
+}
+.slide-actions { display:flex; gap:14px; flex-wrap:wrap; }
+.btn-white {
+  background:white;
+  color:var(--primary);
+  border:none;
+  padding:13px 30px;
+  border-radius:50px;
+  font-size:0.88rem;
+  font-weight:800;
+  cursor:pointer;
+  font-family:'Nunito Sans',sans-serif;
+  transition:all 0.3s;
+  text-decoration:none;
+  display:inline-block;
+}
+.btn-white:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+.btn-outline-white {
+  background:transparent;
+  color:white;
+  border:2px solid rgba(255,255,255,0.6);
+  padding:11px 28px;
+  border-radius:50px;
+  font-size:0.88rem;
+  font-weight:700;
+  cursor:pointer;
+  font-family:'Nunito Sans',sans-serif;
+  transition:all 0.3s;
+}
+.btn-outline-white:hover { background:rgba(255,255,255,0.15); border-color:white; }
+
+/* Doctor photo card in hero */
+.slide-photo-col { display:flex; justify-content:center; align-items:flex-end; height:100%; }
+.hero-doc-card {
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:20px 20px 0 0;
+  padding:30px 30px 0;
+  text-align:center;
+  max-width:320px;
+  width:100%;
+}
+.hero-doc-img {
+  width:100%;
+  border-radius:12px 12px 0 0;
+  height:380px;
+  object-fit:cover;
+  object-position:center top;
+}
+.hero-doc-name {
+  font-family:'Playfair Display', serif;
+  font-size:1.3rem;
+  font-weight:700;
+  color:white;
+  margin:16px 0 4px;
+}
+.hero-doc-deg { font-size:0.78rem; color:rgba(255,255,255,0.7); margin-bottom:16px; }
+
+/* Slide stats bar */
+.hero-stats-bar {
+  position:absolute;
+  bottom:0; left:0; right:0;
+  z-index:3;
+  background:white;
+  padding:0;
+}
+.stats-bar-inner {
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.stat-item {
+  padding:22px 24px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  border-right:1px solid var(--border);
+}
+.stat-item:last-child { border-right:none; }
+.stat-icon {
+  width:48px; height:48px;
+  background:var(--primary-light);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem;
+  flex-shrink:0;
+}
+.stat-num {
+  font-family:'Playfair Display',serif;
+  font-size:1.7rem;
+  font-weight:700;
+  color:var(--primary);
+  line-height:1;
+}
+.stat-lbl { font-size:0.78rem; color:var(--text-light); font-weight:600; margin-top:3px; }
+
+/* Slider dots */
+.slider-dots {
+  position:absolute;
+  bottom:100px; left:60px;
+  z-index:4;
+  display:flex; gap:8px;
+}
+.dot {
+  width:28px; height:4px;
+  background:rgba(255,255,255,0.35);
+  border-radius:2px;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+.dot.active { background:white; width:48px; }
+
+/* ── ABOUT ── */
+.about {
+  padding:90px 24px;
+  background:white;
+}
+.about-inner {
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+}
+.about-img-col { position:relative; }
+.about-main-img {
+  width:100%;
+  height:500px;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:16px;
+  display:block;
+}
+.about-floating-card {
+  position:absolute;
+  bottom:-24px; right:-24px;
+  background:var(--primary);
+  color:white;
+  padding:24px 28px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 16px 40px rgba(26,107,107,0.35);
+}
+.afc-num { font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:700; line-height:1; }
+.afc-lbl { font-size:0.78rem; font-weight:700; opacity:0.85; text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+.about-experience-badge {
+  position:absolute;
+  top:24px; left:-20px;
+  background:var(--accent);
+  color:white;
+  padding:14px 18px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 8px 24px rgba(232,160,0,0.4);
+}
+.aeb-num { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; line-height:1; }
+.aeb-lbl { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+
+.about-text-col { padding:10px 0; }
+.section-tag {
+  display:inline-block;
+  background:var(--primary-light);
+  color:var(--primary);
+  font-size:0.72rem;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:6px 16px;
+  border-radius:50px;
+  margin-bottom:18px;
+}
+.section-heading {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3vw,2.7rem);
+  font-weight:700;
+  line-height:1.2;
+  color:var(--text);
+  margin-bottom:20px;
+}
+.section-heading em { font-style:italic; color:var(--primary); }
+.section-line {
+  width:60px; height:4px;
+  background:var(--primary);
+  border-radius:2px;
+  margin-bottom:24px;
+}
+.about-text-col p {
+  font-size:0.97rem;
+  line-height:1.85;
+  color:var(--text-light);
+  margin-bottom:16px;
+  font-weight:400;
+}
+.qual-row {
+  display:flex; flex-wrap:wrap; gap:10px;
+  margin:24px 0 28px;
+}
+.qual-tag {
+  background:var(--bg);
+  border:1.5px solid var(--border);
+  color:var(--primary);
+  padding:7px 16px;
+  border-radius:50px;
+  font-size:0.8rem;
+  font-weight:700;
+}
+.about-cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; }
+.btn-primary {
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:13px 28px;
+  border-radius:50px;
+  font-size:0.88rem;
+  font-weight:800;
+  cursor:pointer;
+  font-family:'Nunito Sans',sans-serif;
+  transition:all 0.3s;
+  text-decoration:none;
+  display:inline-block;
+}
+.btn-primary:hover { background:var(--primary-dark); transform:translateY(-1px); box-shadow:0 8px 24px rgba(26,107,107,0.3); }
+.btn-secondary {
+  background:transparent;
+  color:var(--primary);
+  border:2px solid var(--primary);
+  padding:11px 26px;
+  border-radius:50px;
+  font-size:0.88rem;
+  font-weight:700;
+  cursor:pointer;
+  font-family:'Nunito Sans',sans-serif;
+  transition:all 0.3s;
+}
+.btn-secondary:hover { background:var(--primary); color:white; }
+
+/* ── SERVICES ── */
+.services {
+  padding:90px 24px;
+  background:var(--bg);
+}
+.services-inner { max-width:1200px; margin:0 auto; }
+.section-header { text-align:center; margin-bottom:52px; }
+.services-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.service-card {
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,0.06);
+  transition:all 0.35s;
+  cursor:pointer;
+  position:relative;
+  group:true;
+}
+.service-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(26,107,107,0.15); }
+.service-card-img {
+  height:200px;
+  background:linear-gradient(135deg, var(--primary-light), #c5e8e8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:4rem;
+  position:relative;
+  overflow:hidden;
+}
+.service-card-img::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, transparent 50%, rgba(26,107,107,0.08));
+}
+.service-card-body { padding:24px; }
+.service-card-body h3 {
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:10px;
+}
+.service-card-body p {
+  font-size:0.88rem;
+  color:var(--text-light);
+  line-height:1.7;
+  margin-bottom:16px;
+}
+.service-link {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  color:var(--primary);
+  font-size:0.83rem;
+  font-weight:800;
+  text-decoration:none;
+  transition:gap 0.2s;
+}
+.service-link:hover { gap:10px; }
+
+/* ── ACHIEVEMENT STRIP ── */
+.achievement-strip {
+  background:var(--primary);
+  padding:60px 24px;
+}
+.achievement-inner {
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:rgba(255,255,255,0.1);
+}
+.ach-item {
+  background:var(--primary);
+  padding:32px 24px;
+  text-align:center;
+  transition:background 0.3s;
+}
+.ach-item:hover { background:var(--primary-dark); }
+.ach-icon { font-size:2rem; margin-bottom:12px; display:block; }
+.ach-num {
+  font-family:'Playfair Display',serif;
+  font-size:2.6rem;
+  font-weight:700;
+  color:white;
+  line-height:1;
+  display:block;
+}
+.ach-lbl { font-size:0.82rem; color:rgba(255,255,255,0.75); font-weight:600; margin-top:6px; text-transform:uppercase; letter-spacing:1px; }
+
+/* ── HOSPITAL SECTION ── */
+.hospital { padding:90px 24px; background:white; }
+.hospital-inner {
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+}
+.hospital-text-col .section-tag { background:#fff3e0; color:#e8a000; }
+.hospital-img-col { position:relative; }
+.hospital-img-col img {
+  width:100%;
+  height:480px;
+  object-fit:cover;
+  border-radius:16px;
+  display:block;
+}
+.hospital-overlay-card {
+  position:absolute;
+  bottom:24px; left:-20px;
+  background:white;
+  border-radius:14px;
+  padding:20px 24px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.12);
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.hoc-icon { font-size:2rem; }
+.hoc-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-light); font-weight:700; }
+.hoc-value { font-size:1.1rem; font-weight:800; color:var(--text); margin-top:2px; }
+
+.features-list { margin:28px 0; display:flex; flex-direction:column; gap:12px; }
+.feat-item {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 18px;
+  background:var(--bg);
+  border-radius:10px;
+  border-left:3px solid var(--primary);
+  transition:all 0.2s;
+}
+.feat-item:hover { background:var(--primary-light); border-left-color:var(--primary); }
+.feat-emoji { font-size:1.2rem; }
+.feat-text { font-size:0.9rem; font-weight:700; color:var(--text); }
+
+/* ── WHY CHOOSE US ── */
+.why { padding:90px 24px; background:var(--bg); }
+.why-inner { max-width:1200px; margin:0 auto; }
+.why-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  margin-top:52px;
+}
+.why-card {
+  background:white;
+  border-radius:16px;
+  padding:36px 28px;
+  text-align:center;
+  box-shadow:0 4px 16px rgba(0,0,0,0.05);
+  transition:all 0.3s;
+  border-bottom:3px solid transparent;
+}
+.why-card:hover { transform:translateY(-5px); border-bottom-color:var(--primary); box-shadow:0 12px 36px rgba(26,107,107,0.12); }
+.why-icon {
+  width:72px; height:72px;
+  background:var(--primary-light);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:2rem;
+  margin:0 auto 20px;
+  transition:background 0.3s;
+}
+.why-card:hover .why-icon { background:var(--primary); }
+.why-card h3 {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:10px;
+}
+.why-card p { font-size:0.85rem; color:var(--text-light); line-height:1.7; }
+
+/* ── TESTIMONIALS ── */
+.testimonials { padding:90px 24px; background:white; }
+.testi-inner { max-width:1200px; margin:0 auto; }
+.testi-slider { position:relative; overflow:hidden; margin-top:52px; }
+.testi-track { display:flex; transition:transform 0.5s ease; }
+.testi-card {
+  min-width:calc(33.333% - 16px);
+  margin-right:24px;
+  background:var(--bg);
+  border-radius:16px;
+  padding:32px;
+  border:1px solid var(--border);
+  transition:all 0.3s;
+}
+.testi-card:hover { background:white; box-shadow:0 12px 36px rgba(0,0,0,0.08); border-color:var(--primary); }
+.testi-stars { color:#f59e0b; font-size:0.9rem; margin-bottom:16px; }
+.testi-text {
+  font-size:0.9rem;
+  line-height:1.8;
+  color:var(--text-light);
+  margin-bottom:24px;
+  font-style:italic;
+}
+.testi-author { display:flex; align-items:center; gap:14px; }
+.testi-avatar {
+  width:46px; height:46px;
+  border-radius:50%;
+  background:var(--primary);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  font-weight:700;
+  color:white;
+  flex-shrink:0;
+}
+.testi-name { font-weight:800; font-size:0.92rem; color:var(--text); }
+.testi-loc { font-size:0.78rem; color:var(--text-light); margin-top:2px; }
+.testi-nav { display:flex; justify-content:center; gap:10px; margin-top:36px; }
+.tnav-btn {
+  width:40px; height:40px;
+  border-radius:50%;
+  border:2px solid var(--border);
+  background:white;
+  cursor:pointer;
+  font-size:1.1rem;
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.2s;
+}
+.tnav-btn:hover { border-color:var(--primary); color:var(--primary); }
+
+/* ── FAQ ── */
+.faq { padding:90px 24px; background:var(--bg); }
+.faq-inner {
+  max-width:900px;
+  margin:0 auto;
+}
+.faq-list { margin-top:48px; display:flex; flex-direction:column; gap:12px; }
+.faq-item {
+  background:white;
+  border-radius:12px;
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+.faq-q {
+  padding:20px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  font-weight:700;
+  font-size:0.95rem;
+  color:var(--text);
+  transition:color 0.2s;
+  user-select:none;
+}
+.faq-q:hover { color:var(--primary); }
+.faq-icon {
+  width:28px; height:28px;
+  border:2px solid var(--border);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1rem;
+  flex-shrink:0;
+  transition:all 0.3s;
+  color:var(--primary);
+}
+.faq-item.open .faq-icon { background:var(--primary); color:white; border-color:var(--primary); transform:rotate(45deg); }
+.faq-a {
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.35s ease;
+}
+.faq-a-inner {
+  padding:0 24px 20px;
+  font-size:0.9rem;
+  line-height:1.8;
+  color:var(--text-light);
+  border-top:1px solid var(--border);
+  padding-top:16px;
+}
+.faq-item.open .faq-a { max-height:200px; }
+
+/* ── APPOINTMENT CTA ── */
+.appt-cta {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding:80px 24px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.appt-cta::before {
+  content:'';
+  position:absolute;
+  top:-100px; right:-100px;
+  width:400px; height:400px;
+  background:rgba(255,255,255,0.04);
+  border-radius:50%;
+}
+.appt-cta::after {
+  content:'';
+  position:absolute;
+  bottom:-120px; left:-80px;
+  width:350px; height:350px;
+  background:rgba(255,255,255,0.04);
+  border-radius:50%;
+}
+.appt-cta-inner { position:relative; z-index:1; max-width:700px; margin:0 auto; }
+.appt-cta h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3vw,2.8rem);
+  font-weight:700;
+  color:white;
+  margin-bottom:16px;
+}
+.appt-cta p { font-size:1.05rem; color:rgba(255,255,255,0.8); margin-bottom:36px; font-weight:400; }
+.appt-buttons { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+.btn-call {
+  display:flex; align-items:center; gap:10px;
+  background:white;
+  color:var(--primary);
+  border:none;
+  padding:14px 28px;
+  border-radius:50px;
+  font-size:0.9rem;
+  font-weight:800;
+  cursor:pointer;
+  font-family:'Nunito Sans',sans-serif;
+  transition:all 0.3s;
+  text-decoration:none;
+}
+.btn-call:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+.btn-whatsapp {
+  display:flex; align-items:center; gap:10px;
+  background:#25D366;
+  color:white;
+  border:none;
+  padding:14px 28px;
+  border-radius:50px;
+  font-size:0.9rem;
+  font-weight:800;
+  cursor:pointer;
+  font-family:'Nunito Sans',sans-serif;
+  transition:all 0.3s;
+  text-decoration:none;
+}
+.btn-whatsapp:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(37,211,102,0.35); }
+
+/* ── CONTACT ── */
+.contact { padding:90px 24px; background:white; }
+.contact-inner {
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:70px;
+}
+.contact-form {
+  background:var(--bg);
+  border-radius:20px;
+  padding:44px;
+  border:1px solid var(--border);
+}
+.contact-form h3 {
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  font-weight:700;
+  margin-bottom:28px;
+  color:var(--text);
+}
+.form-row2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.fgroup { margin-bottom:18px; }
+.fgroup label {
+  display:block;
+  font-size:0.78rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  color:var(--text-light);
+  margin-bottom:7px;
+}
+.fgroup input,
+.fgroup select,
+.fgroup textarea {
+  width:100%;
+  background:white;
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  padding:12px 16px;
+  font-size:0.92rem;
+  color:var(--text);
+  font-family:'Nunito Sans',sans-serif;
+  outline:none;
+  transition:border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance:none;
+}
+.fgroup select option { color:var(--text); }
+.fgroup input:focus,
+.fgroup select:focus,
+.fgroup textarea:focus {
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(26,107,107,0.1);
+}
+.fgroup textarea { height:110px; resize:vertical; }
+.form-submit-btn {
+  width:100%;
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:15px;
+  border-radius:50px;
+  font-size:0.9rem;
+  font-weight:800;
+  cursor:pointer;
+  font-family:'Nunito Sans',sans-serif;
+  transition:all 0.3s;
+  margin-top:6px;
+}
+.form-submit-btn:hover { background:var(--primary-dark); box-shadow:0 8px 24px rgba(26,107,107,0.3); }
+
+.contact-info-col { padding-top:10px; }
+.contact-info-col h3 {
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  font-weight:700;
+  margin-bottom:10px;
+  color:var(--text);
+}
+.contact-info-col > p {
+  font-size:0.92rem;
+  color:var(--text-light);
+  line-height:1.7;
+  margin-bottom:32px;
+}
+.cinfo-list { display:flex; flex-direction:column; gap:16px; margin-bottom:32px; }
+.cinfo-item {
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  padding:18px;
+  background:var(--bg);
+  border-radius:12px;
+  border-left:3px solid var(--primary);
+}
+.cinfo-icon {
+  width:40px; height:40px;
+  background:var(--primary-light);
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem;
+  flex-shrink:0;
+}
+.cinfo-lbl { font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:var(--primary); margin-bottom:4px; }
+.cinfo-val { font-size:0.9rem; font-weight:600; color:var(--text); line-height:1.5; }
+.map-box {
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+.map-box iframe { display:block; width:100%; height:200px; }
+
+/* ── FOOTER ── */
+footer {
+  background:#0d3535;
+  color:white;
+  padding:48px 24px 24px;
+}
+.footer-inner {
+  max-width:1200px;
+  margin:0 auto;
+}
+.footer-top {
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:40px;
+  padding-bottom:40px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.footer-brand .logo-text-main { font-size:1.2rem; color:white; }
+.footer-brand p { font-size:0.85rem; color:rgba(255,255,255,0.6); line-height:1.7; margin-top:12px; max-width:280px; }
+.footer-col h4 { font-size:0.88rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-bottom:18px; color:rgba(255,255,255,0.9); }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.footer-col ul li a { text-decoration:none; color:rgba(255,255,255,0.6); font-size:0.88rem; transition:color 0.2s; }
+.footer-col ul li a:hover { color:white; }
+.footer-bottom {
+  padding-top:24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.footer-bottom p { font-size:0.82rem; color:rgba(255,255,255,0.5); }
+.footer-emergency {
+  background:#c0392b;
+  color:white;
+  border:none;
+  padding:10px 22px;
+  border-radius:50px;
+  font-size:0.82rem;
+  font-weight:800;
+  cursor:pointer;
+  font-family:'Nunito Sans',sans-serif;
+  animation:epulse 2.5s ease-in-out infinite;
+}
+@keyframes epulse {
+  0%,100%{box-shadow:0 0 0 0 rgba(192,57,43,0.5)}
+  50%{box-shadow:0 0 0 10px rgba(192,57,43,0)}
+}
+
+/* ── FLOAT BUTTONS ── */
+.wa-float {
+  position:fixed;
+  bottom:32px; right:32px;
+  z-index:999;
+  width:56px; height:56px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.7rem;
+  box-shadow:0 8px 24px rgba(37,211,102,0.4);
+  text-decoration:none;
+  transition:transform 0.3s;
+}
+.wa-float:hover { transform:scale(1.1); }
+.call-float {
+  position:fixed;
+  bottom:100px; right:32px;
+  z-index:999;
+  width:56px; height:56px;
+  background:var(--primary);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem;
+  box-shadow:0 8px 24px rgba(26,107,107,0.4);
+  text-decoration:none;
+  transition:transform 0.3s;
+}
+.call-float:hover { transform:scale(1.1); }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity:0; transform:translateY(32px); transition:opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-left { opacity:0; transform:translateX(-32px); transition:opacity 0.65s ease, transform 0.65s ease; }
+.reveal-left.visible { opacity:1; transform:translateX(0); }
+.reveal-right { opacity:0; transform:translateX(32px); transition:opacity 0.65s ease, transform 0.65s ease; }
+.reveal-right.visible { opacity:1; transform:translateX(0); }
+
+/* ── MOBILE MENU ── */
+.hamburger { display:none; background:none; border:none; cursor:pointer; padding:4px; }
+.hamburger span { display:block; width:24px; height:2.5px; background:var(--text); border-radius:2px; margin:5px 0; transition:all 0.3s; }
+.mobile-menu {
+  display:none;
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  background:white;
+  z-index:2000;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu a {
+  font-size:1.4rem;
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  color:var(--text);
+  text-decoration:none;
+  transition:color 0.2s;
+}
+.mobile-menu a:hover { color:var(--primary); }
+.mobile-close {
+  position:absolute;
+  top:24px; right:24px;
+  background:none; border:none;
+  font-size:1.8rem;
+  cursor:pointer;
+  color:var(--text);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .top-bar-left > *:not(:first-child){ display:none; }
+  .nav-links { display:none; }
+  .hamburger { display:block; }
+  .hero { height:auto; min-height:auto; }
+  .slide { position:relative; height:auto; }
+  .slide:not(.active){ display:none; }
+  .slide-content { grid-template-columns:1fr; padding:80px 24px 40px; gap:30px; }
+  .slide-photo-col { display:none; }
+  .hero-stats-bar .stats-bar-inner { grid-template-columns:1fr 1fr; }
+  .stat-item:nth-child(2){ border-right:none; }
+  .stat-item:nth-child(3){ border-right:1px solid var(--border); }
+  .slider-dots { display:none; }
+  .about-inner,.hospital-inner,.contact-inner { grid-template-columns:1fr; gap:40px; }
+  .about-floating-card { bottom:-10px; right:10px; }
+  .about-experience-badge { top:16px; left:10px; }
+  .services-grid { grid-template-columns:1fr; }
+  .achievement-inner { grid-template-columns:1fr 1fr; }
+  .why-grid { grid-template-columns:1fr 1fr; }
+  .testi-card { min-width:100%; }
+  .footer-top { grid-template-columns:1fr 1fr; }
+  .contact-form { padding:28px 20px; }
+  .form-row2 { grid-template-columns:1fr; }
+  .appt-buttons { flex-direction:column; align-items:center; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-left">
+      <div class="top-bar-item"><span>📞</span> +91 9935298978</div>
+      <div class="top-bar-item"><span>🕐</span> Mon–Sat: 10 AM–2 PM &amp; 5–8 PM</div>
+      <div class="top-bar-item"><span>📍</span> H No. 3, D/2, Dr Lohia Rd, Civil Lines, Prayagraj, UP 211001</div>
+    </div>
+    <div class="top-bar-right">
+      <a class="top-social" href="#">f</a>
+      <a class="top-social" href="#">in</a>
+      <a class="top-social" href="#">▶</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">🦴</div>
+      <div>
+        <div class="logo-text-main">Dr. Prasanna Kumar Pandey</div>
+        <div class="logo-text-sub">MBBS, MS (Ortho) | Orthopedic Specialist, Prayagraj</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#about" class="active">About</a>
+      <a href="#services">Services</a>
+      <a href="#hospital">Hospital</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-cta">Book Appointment</a>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#hospital" onclick="document.getElementById('mobileMenu').classList.remove('open')">Hospital</a>
+  <a href="#testimonials" onclick="document.getElementById('mobileMenu').classList.remove('open')">Reviews</a>
+  <a href="#faq" onclick="document.getElementById('mobileMenu').classList.remove('open')">FAQ</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Book Appointment</a>
+</div>
+
+<!-- HERO SLIDER -->
+<section class="hero">
+  <!-- Slide 1 -->
+  <div class="slide slide-1 active">
+    <div class="slide-bg"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-text">
+        <div class="slide-badge">Orthopedic Specialist · Prayagraj</div>
+        <h1>Best <em>Orthopedic</em><br>Doctor in Prayagraj</h1>
+        <p>Expert bone, joint & rehabilitation care with 15+ years of experience. Helping thousands live pain-free, active lives.</p>
+        <div class="slide-bullets">
+          <div class="slide-bullet">15+ Years of Clinical Experience</div>
+          <div class="slide-bullet">10,000+ Successful Surgeries</div>
+          <div class="slide-bullet">24/7 Emergency Care Available</div>
+        </div>
+        <div class="slide-actions">
+          <a href="#contact" class="btn-white">📅 Book Appointment</a>
+          <button class="btn-outline-white" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">View Services</button>
+        </div>
+      </div>
+      <div class="slide-photo-col">
+        <div class="hero-doc-card">
+          <img src="https://i.ibb.co/NdhVphqf/IMG-3890.jpg" class="hero-doc-img" alt="Dr. Prasanna Kumar Pandey">
+          <div class="hero-doc-name">Dr. P.K. Pandey</div>
+          <div class="hero-doc-deg">MBBS, MS (Orthopedics)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide slide-2">
+    <div class="slide-bg"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-text">
+        <div class="slide-badge">Joint Replacement Expert</div>
+        <h1>Advanced <em>Joint<br>Replacement</em> Surgery</h1>
+        <p>State-of-the-art knee, hip and shoulder replacement surgeries with minimally invasive techniques for faster recovery.</p>
+        <div class="slide-bullets">
+          <div class="slide-bullet">Minimally Invasive Techniques</div>
+          <div class="slide-bullet">Faster Post-Surgery Recovery</div>
+          <div class="slide-bullet">Personalized Rehabilitation Plan</div>
+        </div>
+        <div class="slide-actions">
+          <a href="#contact" class="btn-white">📅 Book Appointment</a>
+          <a href="tel:+919580500147" class="btn-outline-white">📞 Call Now</a>
+        </div>
+      </div>
+      <div class="slide-photo-col">
+        <div class="hero-doc-card">
+          <img src="https://i.ibb.co/NdhVphqf/IMG-3890.jpg" class="hero-doc-img" alt="Life Line Hospital">
+          <div class="hero-doc-name">Life Line Hospital</div>
+          <div class="hero-doc-deg">Civil Lines, Prayagraj</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide slide-3">
+    <div class="slide-bg"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-text">
+        <div class="slide-badge">Prosthetics & Rehabilitation</div>
+        <h1>Restoring <em>Mobility</em><br>& Independence</h1>
+        <p>Comprehensive prosthetics, orthotics and rehabilitation services to help patients regain full, active lives after injury.</p>
+        <div class="slide-bullets">
+          <div class="slide-bullet">Custom Prosthetics & Orthotics</div>
+          <div class="slide-bullet">Structured Physiotherapy Programs</div>
+          <div class="slide-bullet">Sports Injury Specialist</div>
+        </div>
+        <div class="slide-actions">
+          <a href="#contact" class="btn-white">📅 Book Appointment</a>
+          <button class="btn-outline-white" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Know Your Doctor</button>
+        </div>
+      </div>
+      <div class="slide-photo-col">
+        <div class="hero-doc-card">
+          <img src="https://i.ibb.co/NdhVphqf/IMG-3890.jpg" class="hero-doc-img" alt="Rehabilitation Care">
+          <div class="hero-doc-name">Rehabilitation Centre</div>
+          <div class="hero-doc-deg">World-Class Physiotherapy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slider dots -->
+  <div class="slider-dots">
+    <div class="dot active" onclick="goToSlide(0)"></div>
+    <div class="dot" onclick="goToSlide(1)"></div>
+    <div class="dot" onclick="goToSlide(2)"></div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="hero-stats-bar">
+    <div class="stats-bar-inner">
+      <div class="stat-item">
+        <div class="stat-icon">🦴</div>
+        <div>
+          <div class="stat-num">15+</div>
+          <div class="stat-lbl">Years Experience</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">🏥</div>
+        <div>
+          <div class="stat-num">10K+</div>
+          <div class="stat-lbl">Patients Treated</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">⭐</div>
+        <div>
+          <div class="stat-num">4.9★</div>
+          <div class="stat-lbl">Patient Rating</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">🚨</div>
+        <div>
+          <div class="stat-num">24/7</div>
+          <div class="stat-lbl">Emergency Care</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-inner container">
+    <div class="about-img-col reveal-left">
+      <div class="about-experience-badge">
+        <div class="aeb-num">15+</div>
+        <div class="aeb-lbl">Years Exp.</div>
+      </div>
+      <img src="https://i.ibb.co/NdhVphqf/IMG-3890.jpg" alt="Dr. Prasanna Kumar Pandey" class="about-main-img">
+      <div class="about-floating-card">
+        <div class="afc-num">10K+</div>
+        <div class="afc-lbl">Patients Treated</div>
+      </div>
+    </div>
+    <div class="about-text-col reveal-right">
+      <span class="section-tag">Know Your Doctor</span>
+      <h2 class="section-heading">Trusted <em>Orthopedic</em> Specialist in Prayagraj</h2>
+      <div class="section-line"></div>
+      <p>Dr. Prasanna Kumar Pandey is a highly experienced Orthopedic and Rehabilitation Specialist based at Life Line Hospital, Prayagraj. With over 15 years of dedicated clinical practice, he has helped thousands of patients regain their mobility and lead pain-free lives.</p>
+      <p>His approach combines modern surgical techniques with personalised rehabilitation programs — ensuring the best possible outcomes from fracture management to complex joint reconstructions and prosthetic fitting.</p>
+      <p>Dr. Pandey is known for his compassionate approach, clear communication, and commitment to keeping patients informed and comfortable throughout their treatment journey.</p>
+      <div class="qual-row">
+        <span class="qual-tag">MBBS</span>
+        <span class="qual-tag">MS (Orthopedics)</span>
+        <span class="qual-tag">Joint Replacement</span>
+        <span class="qual-tag">Rehabilitation</span>
+        <span class="qual-tag">Prosthetics & Orthotics</span>
+      </div>
+      <div class="about-cta-row">
+        <a href="#contact" class="btn-primary">📅 Book Appointment</a>
+        <a href="tel:+919580500147" class="btn-secondary">📞 Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="services-inner">
+    <div class="section-header reveal">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-heading" style="margin-top:10px;">Specialized <em>Treatments</em> for Orthopedic Care</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#e8f5f5,#b2dede)">🦴</div>
+        <div class="service-card-body">
+          <h3>Orthopedic Consultation</h3>
+          <p>Comprehensive evaluation and expert diagnosis of bone, muscle, and joint disorders by a seasoned specialist with 15+ years of experience.</p>
+          <a href="#contact" class="service-link">Book Consultation →</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#fff3e0,#ffd48a)">🩹</div>
+        <div class="service-card-body">
+          <h3>Fracture Treatment</h3>
+          <p>Expert management of all fracture types using the latest fixation techniques, modern implants, and structured recovery programs.</p>
+          <a href="#contact" class="service-link">Know More →</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#fce4ec,#f8b8c8)">🦵</div>
+        <div class="service-card-body">
+          <h3>Joint Replacement Surgery</h3>
+          <p>Advanced knee, hip, and shoulder replacement surgeries with minimally invasive techniques for reduced pain and faster recovery.</p>
+          <a href="#contact" class="service-link">Know More →</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#e8eaf6,#b0b8e8)">🦾</div>
+        <div class="service-card-body">
+          <h3>Prosthetics & Orthotics</h3>
+          <p>Custom-fitted artificial limbs, braces, and orthotic supports designed for optimal comfort, function, and long-term use.</p>
+          <a href="#contact" class="service-link">Know More →</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#e8f5e9,#a8d8a8)">🏃</div>
+        <div class="service-card-body">
+          <h3>Rehabilitation Therapy</h3>
+          <p>Structured physiotherapy and personalised recovery programs to fully restore strength, movement, and mobility after surgery.</p>
+          <a href="#contact" class="service-link">Know More →</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-img" style="background:linear-gradient(135deg,#f3e5f5,#d8a8e8)">🧬</div>
+        <div class="service-card-body">
+          <h3>Spine & Back Care</h3>
+          <p>Non-surgical and surgical solutions for back pain, slipped disc, sciatica, and other spinal conditions for lasting relief.</p>
+          <a href="#contact" class="service-link">Know More →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENT STRIP -->
+<div class="achievement-strip">
+  <div class="achievement-inner">
+    <div class="ach-item reveal">
+      <span class="ach-icon">🦴</span>
+      <span class="ach-num">5000+</span>
+      <div class="ach-lbl">Surgeries Performed</div>
+    </div>
+    <div class="ach-item reveal">
+      <span class="ach-icon">😊</span>
+      <span class="ach-num">98%</span>
+      <div class="ach-lbl">Patient Satisfaction</div>
+    </div>
+    <div class="ach-item reveal">
+      <span class="ach-icon">⭐</span>
+      <span class="ach-num">1200+</span>
+      <div class="ach-lbl">Positive Reviews</div>
+    </div>
+    <div class="ach-item reveal">
+      <span class="ach-icon">🏥</span>
+      <span class="ach-num">2</span>
+      <div class="ach-lbl">Hospital Locations</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOSPITAL -->
+<section id="hospital" class="hospital">
+  <div class="hospital-inner container">
+    <div class="about-text-col reveal-left">
+      <span class="section-tag" style="background:#fff3e0;color:#e8a000;">Our Facility</span>
+      <h2 class="section-heading" style="margin-top:10px;">Life Line <em>Hospital</em></h2>
+      <div class="section-line"></div>
+      <p style="font-size:0.97rem;line-height:1.85;color:var(--text-light);margin-bottom:6px;">A state-of-the-art multi-specialty hospital equipped with modern infrastructure and a dedicated team of experienced medical professionals. We provide round-the-clock emergency, surgical, and critical care services to every patient.</p>
+      <div class="features-list">
+        <div class="feat-item"><span class="feat-emoji">🏥</span><span class="feat-text">Modern Operation Theatre</span></div>
+        <div class="feat-item"><span class="feat-emoji">🚨</span><span class="feat-text">24/7 Emergency & ICU Services</span></div>
+        <div class="feat-item"><span class="feat-emoji">🔬</span><span class="feat-text">In-House Pathology Laboratory</span></div>
+        <div class="feat-item"><span class="feat-emoji">📡</span><span class="feat-text">Digital X-Ray, ECG & Diagnostics</span></div>
+        <div class="feat-item"><span class="feat-emoji">🏋️</span><span class="feat-text">Dedicated Physiotherapy Unit</span></div>
+        <div class="feat-item"><span class="feat-emoji">🛏️</span><span class="feat-text">Comfortable Ward & ICU Facilities</span></div>
+      </div>
+      <a href="https://maps.google.com" target="_blank" class="btn-primary" style="display:inline-block;">📍 Get Directions</a>
+    </div>
+    <div class="hospital-img-col reveal-right">
+      <img src="https://i.ibb.co/NdhVphqf/IMG-3890.jpg" alt="Life Line Hospital Prayagraj">
+      <div class="hospital-overlay-card">
+        <span class="hoc-icon">📍</span>
+        <div>
+          <div class="hoc-label">Location</div>
+          <div class="hoc-value">H No. 3, D/2, Dr Lohia Rd, Civil Lines, Prayagraj, UP 211001</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why">
+  <div class="why-inner container">
+    <div class="section-header reveal">
+      <span class="section-tag">Why Choose Dr. Pandey</span>
+      <h2 class="section-heading" style="margin-top:10px;">Compassionate Care,<br><em>Expert Results</em></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">🎓</div>
+        <h3>Highly Qualified</h3>
+        <p>MBBS & MS (Orthopedics) with specialized training in joint replacement and rehabilitation from premier institutes.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🤝</div>
+        <h3>Patient-First Approach</h3>
+        <p>Every patient receives personalised attention and a customised treatment plan designed around their unique condition.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🔬</div>
+        <h3>Modern Techniques</h3>
+        <p>Uses the latest minimally invasive surgical methods and modern implants for faster recovery and better outcomes.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🚨</div>
+        <h3>24/7 Availability</h3>
+        <p>Round-the-clock emergency services ensure you receive critical orthopedic care whenever you need it most.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="testi-inner container">
+    <div class="section-header reveal">
+      <span class="section-tag">Patient Stories</span>
+      <h2 class="section-heading" style="margin-top:10px;">What Our <em>Patients</em> Say</h2>
+    </div>
+    <div class="testi-slider reveal">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Dr. Pandey's treatment for my knee replacement was exceptional. His precision and post-surgery guidance helped me walk pain-free within weeks. The rehabilitation plan was thorough and very effective. I am deeply grateful."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">RV</div>
+            <div>
+              <div class="testi-name">Ramesh Verma</div>
+              <div class="testi-loc">Prayagraj</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"After a bad accident fracture, I feared I'd never recover fully. Dr. Pandey's expert hands and caring nature gave me my life back. He explained everything clearly and made me feel at ease throughout my recovery."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SS</div>
+            <div>
+              <div class="testi-name">Sunita Singh</div>
+              <div class="testi-loc">Lucknow</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"My mother's hip replacement was done flawlessly. The care at Life Line Hospital was outstanding. Dr. Pandey's calm and professional attitude put our whole family at ease during a very stressful time. Highly recommend."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AK</div>
+            <div>
+              <div class="testi-name">Amit Kumar</div>
+              <div class="testi-loc">Varanasi</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I had severe back pain for years. Dr. Pandey diagnosed my condition quickly and suggested the right non-surgical treatment. Within 3 months I was completely fine. His knowledge and patience are truly remarkable."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">PG</div>
+            <div>
+              <div class="testi-name">Priya Gupta</div>
+              <div class="testi-loc">Allahabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Got my sports injury treated here. The rehabilitation program was excellent — structured and very effective. Dr. Pandey and his team are truly dedicated professionals. I was back on the field much faster than expected."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MK</div>
+            <div>
+              <div class="testi-name">Mohan Kumar</div>
+              <div class="testi-loc">Mirzapur</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-nav">
+      <button class="tnav-btn" onclick="scrollTesti(-1)">←</button>
+      <button class="tnav-btn" onclick="scrollTesti(1)">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="faq-inner container">
+    <div class="section-header reveal" style="text-align:center;">
+      <span class="section-tag">Frequently Asked Questions</span>
+      <h2 class="section-heading" style="margin-top:10px;">Helping You <em>Understand</em> Your Care</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          Who is an Orthopedic Specialist and what do they treat?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">An orthopedic specialist diagnoses and treats conditions affecting the bones, joints, muscles, ligaments, and tendons. This includes fractures, joint pain, arthritis, sports injuries, spinal problems, and more. Dr. Pandey specializes in both surgical and non-surgical orthopedic care.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          When should I see an Orthopedic Doctor?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">You should see an orthopedic doctor if you have persistent joint or bone pain, limited range of motion, swelling around a joint, pain after an injury, difficulty walking, or if you're experiencing back or spine pain that doesn't improve with rest. Early consultation leads to better outcomes.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          What types of joint replacement surgeries are performed?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Dr. Pandey performs knee replacement, hip replacement, and shoulder replacement surgeries. He uses minimally invasive techniques wherever possible to reduce surgical trauma, minimize blood loss, and accelerate the recovery process so patients can return to normal activities sooner.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          How do I book an appointment with Dr. Pandey?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">You can book an appointment by filling the form on this page, calling us directly on +91 9580500147, or messaging us on WhatsApp. OPD hours are Monday to Saturday, 10:00 AM – 2:00 PM and 5:00 PM – 8:00 PM. Emergency services are available 24/7.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          Is physiotherapy required after orthopedic surgery?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Yes, physiotherapy is an essential part of orthopedic recovery. It helps restore strength, flexibility, and mobility after surgery or injury. Dr. Pandey provides structured, personalised rehabilitation programs that are tailored to each patient's specific condition and recovery goals.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT CTA -->
+<div class="appt-cta">
+  <div class="appt-cta-inner reveal">
+    <h2>Ready for Your Appointment?</h2>
+    <p>Take the first step towards a pain-free life. Contact us today to schedule your consultation with Dr. Prasanna Kumar Pandey.</p>
+    <div class="appt-buttons">
+      <a href="tel:+919580500147" class="btn-call">📞 Call Now: +91 9580500147</a>
+      <a href="https://wa.me/919580500147" class="btn-whatsapp">💬 WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="contact-inner container">
+    <div class="reveal-left">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-heading" style="margin-top:10px;margin-bottom:32px;">Book an <em>Appointment</em></h2>
+      <div class="contact-form">
+        <h3>Schedule Your Visit</h3>
+        <div class="form-row2">
+          <div class="fgroup">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Enter your full name">
+          </div>
+          <div class="fgroup">
+            <label>Phone Number *</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX">
+          </div>
+        </div>
+        <div class="fgroup">
+          <label>Condition / Problem</label>
+          <select>
+            <option value="">Select your concern</option>
+            <option>Joint Pain (Knee / Hip / Shoulder)</option>
+            <option>Fracture Treatment</option>
+            <option>Back / Spine Pain</option>
+            <option>Sports Injury</option>
+            <option>Prosthetics / Orthotics</option>
+            <option>Post-Surgery Rehabilitation</option>
+            <option>General Orthopedic Consultation</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-row2">
+          <div class="fgroup">
+            <label>Preferred Date</label>
+            <input type="date">
+          </div>
+          <div class="fgroup">
+            <label>Preferred Time</label>
+            <select>
+              <option value="">Select time slot</option>
+              <option>Morning (10 AM – 2 PM)</option>
+              <option>Evening (5 PM – 8 PM)</option>
+            </select>
+          </div>
+        </div>
+        <div class="fgroup">
+          <label>Message (Optional)</label>
+          <textarea placeholder="Briefly describe your condition or any specific query…"></textarea>
+        </div>
+        <button class="form-submit-btn" onclick="handleSubmit()">📅 Submit Appointment Request</button>
+      </div>
+    </div>
+
+    <div class="contact-info-col reveal-right">
+      <h3>Contact Information</h3>
+      <p>We are here to help you. Reach out to us through any of the options below or visit us directly at Life Line Hospital.</p>
+      <div class="cinfo-list">
+        <div class="cinfo-item">
+          <div class="cinfo-icon">📍</div>
+          <div>
+            <div class="cinfo-lbl">Address</div>
+            <div class="cinfo-val">H No. 3, D/2, Dr Lohia Rd, Lohya Marg,<br>Civil Lines, Prayagraj, UP 211001</div>
+          </div>
+        </div>
+        <div class="cinfo-item">
+          <div class="cinfo-icon">📞</div>
+          <div>
+            <div class="cinfo-lbl">Phone / WhatsApp</div>
+            <div class="cinfo-val">+91 9580500147</div>
+          </div>
+        </div>
+        <div class="cinfo-item">
+          <div class="cinfo-icon">🕐</div>
+          <div>
+            <div class="cinfo-lbl">OPD Hours</div>
+            <div class="cinfo-val">Mon – Sat: 10:00 AM – 2:00 PM<br>& 5:00 PM – 8:00 PM</div>
+          </div>
+        </div>
+        <div class="cinfo-item">
+          <div class="cinfo-icon">🚨</div>
+          <div>
+            <div class="cinfo-lbl">Emergency</div>
+            <div class="cinfo-val">24 × 7 Emergency & ICU Available</div>
+          </div>
+        </div>
+      </div>
+      <div class="map-box">
+        <iframe src="https://maps.google.com/maps?q=H+No+3+D/2+Dr+Lohia+Rd+Civil+Lines+Prayagraj+211001&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="text-decoration:none;display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <div class="logo-icon" style="width:40px;height:40px;font-size:1.2rem;">🦴</div>
+          <div class="logo-text-main" style="color:white;">Dr. P.K. Pandey</div>
+        </div>
+        <p>MBBS, MS (Orthopedics) | Orthopedic & Rehabilitation Specialist at Life Line Hospital, Prayagraj.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Doctor</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#hospital">Hospital</a></li>
+          <li><a href="#testimonials">Patient Reviews</a></li>
+          <li><a href="#contact">Book Appointment</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Orthopedic Consultation</a></li>
+          <li><a href="#services">Fracture Treatment</a></li>
+          <li><a href="#services">Joint Replacement</a></li>
+          <li><a href="#services">Prosthetics & Orthotics</a></li>
+          <li><a href="#services">Rehabilitation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+919580500147">📞 +91 9580500147</a></li>
+          <li><a href="#">📍 Civil Lines, Prayagraj, UP 211001</a></li>
+          <li><a href="#">🕐 10 AM–2 PM | 5–8 PM</a></li>
+          <li><a href="#">🚨 24/7 Emergency</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Dr. Prasanna Kumar Pandey. All Rights Reserved. | Orthopedic Specialist, Prayagraj</p>
+      <button class="footer-emergency">🚨 Emergency: 24/7</button>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<a class="wa-float" href="https://wa.me/919580500147" target="_blank" title="WhatsApp">💬</a>
+<a class="call-float" href="tel:+919580500147" title="Call Now">📞</a>
+
+<script>
+// ── HERO SLIDER ──
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+
+function goToSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+setInterval(() => {
+  goToSlide((currentSlide + 1) % slides.length);
+}, 5500);
+
+// ── TESTIMONIALS SLIDER ──
+let testiPos = 0;
+function scrollTesti(dir) {
+  const track = document.getElementById('testiTrack');
+  const cardW = track.querySelector('.testi-card').offsetWidth + 24;
+  const max = track.children.length - 3;
+  testiPos = Math.max(0, Math.min(max, testiPos + dir));
+  track.style.transform = `translateX(-${testiPos * cardW}px)`;
+}
+
+// ── FAQ ──
+function toggleFAQ(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── FORM SUBMIT ──
+function handleSubmit() {
+  const inputs = document.querySelectorAll('.contact-form input, .contact-form select');
+  let valid = true;
+  inputs.forEach(i => { if (i.value === '') valid = false; });
+  if (valid) {
+    alert('✅ Appointment request submitted successfully!\n\nWe will contact you shortly to confirm your appointment.\n\n🙏 Thank you for choosing Dr. Prasanna Kumar Pandey.');
+  } else {
+    alert('Please fill in your name and phone number to submit.');
+  }
+}
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
