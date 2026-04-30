@@ -1,0 +1,62 @@
+@model List<FashionHub.Models.Order>
+@{
+    ViewData["Title"] = "All Orders";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-page-header">
+    <h1>🛒 Orders (@Model.Count)</h1>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="admin-alert">@TempData["Success"]</div>
+}
+
+<div class="admin-table-wrap">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Any())
+            {
+                <tr><td colspan="8" style="text-align:center;padding:40px;color:#888">No orders yet</td></tr>
+            }
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td><strong>#FH@order.Id.ToString("D6")</strong></td>
+                    <td>@order.CustomerName<br/><small>@order.Email</small></td>
+                    <td>@order.Phone</td>
+                    <td>@order.City - @order.Pincode</td>
+                    <td><strong>₹@order.TotalAmount.ToString("N0")</strong></td>
+                    <td>@order.OrderDate.ToString("dd MMM yyyy")</td>
+                    <td><span class="status-badge @order.Status.ToLower()">@order.Status</span></td>
+                    <td>
+                        <form action="/Admin/UpdateOrderStatus" method="post" style="display:flex;gap:4px">
+                            <input type="hidden" name="id" value="@order.Id" />
+                            <select name="status" class="status-select">
+                                <option value="Pending" selected="@(order.Status=="Pending")">Pending</option>
+                                <option value="Confirmed" selected="@(order.Status=="Confirmed")">Confirmed</option>
+                                <option value="Shipped" selected="@(order.Status=="Shipped")">Shipped</option>
+                                <option value="Delivered" selected="@(order.Status=="Delivered")">Delivered</option>
+                                <option value="Cancelled" selected="@(order.Status=="Cancelled")">Cancelled</option>
+                            </select>
+                            <button type="submit" class="btn-update">Update</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

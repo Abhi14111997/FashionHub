@@ -1,0 +1,39 @@
+@model FashionHub.Models.Order
+@{
+    ViewData["Title"] = "Order Placed!";
+}
+
+<div class="success-container">
+    <div class="success-card">
+        <div class="success-icon">🎉</div>
+        <h1>Order Placed Successfully!</h1>
+        <p>Thank you <strong>@Model.CustomerName</strong>! Your order has been confirmed.</p>
+
+        <div class="order-info">
+            <div class="order-info-row">
+                <span>Order ID</span>
+                <strong>#FH@Model.Id.ToString("D6")</strong>
+            </div>
+            <div class="order-info-row">
+                <span>Total Amount</span>
+                <strong>₹@Model.TotalAmount.ToString("N0")</strong>
+            </div>
+            <div class="order-info-row">
+                <span>Delivery To</span>
+                <strong>@Model.City - @Model.Pincode</strong>
+            </div>
+            <div class="order-info-row">
+                <span>Expected Delivery</span>
+                <strong>@DateTime.Now.AddDays(5).ToString("dd MMM yyyy") - @DateTime.Now.AddDays(7).ToString("dd MMM yyyy")</strong>
+            </div>
+            <div class="order-info-row">
+                <span>Status</span>
+                <strong class="status-pending">@Model.Status</strong>
+            </div>
+        </div>
+
+        <div class="success-actions">
+            <a href="/" class="btn-primary">Continue Shopping</a>
+        </div>
+    </div>
+</div>

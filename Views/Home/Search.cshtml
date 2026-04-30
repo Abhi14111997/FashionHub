@@ -1,0 +1,76 @@
+@model List<FashionHub.Models.Product>
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<div class="search-page">
+    <div class="search-header">
+        <h2>
+            @if (!string.IsNullOrEmpty(ViewBag.Query))
+            { <span>Results for "<em>@ViewBag.Query</em>" (@Model.Count products)</span> }
+            else
+            { <span>All Products (@Model.Count)</span> }
+        </h2>
+
+        <div class="search-filters">
+            <form action="/Home/Search" method="get" class="filter-form">
+                <input type="hidden" name="q" value="@ViewBag.Query" />
+                <select name="category" onchange="this.form.submit()">
+                    <option value="">All Categories</option>
+                    <option value="Men" selected="@(ViewBag.Category == "Men")">Men</option>
+                    <option value="Women" selected="@(ViewBag.Category == "Women")">Women</option>
+                    <option value="Kids" selected="@(ViewBag.Category == "Kids")">Kids</option>
+                    <option value="Footwear" selected="@(ViewBag.Category == "Footwear")">Footwear</option>
+                    <option value="Accessories" selected="@(ViewBag.Category == "Accessories")">Accessories</option>
+                </select>
+                <select name="sort" onchange="this.form.submit()">
+                    <option value="">Sort By</option>
+                    <option value="price_asc" selected="@(ViewBag.Sort == "price_asc")">Price: Low to High</option>
+                    <option value="price_desc" selected="@(ViewBag.Sort == "price_desc")">Price: High to Low</option>
+                    <option value="rating" selected="@(ViewBag.Sort == "rating")">Top Rated</option>
+                    <option value="newest" selected="@(ViewBag.Sort == "newest")">Newest First</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="no-results">
+            <div>😕</div>
+            <h3>No products found</h3>
+            <a href="/" class="btn-primary">Browse All Products</a>
+        </div>
+    }
+    else
+    {
+        <div class="products-grid">
+            @foreach (var product in Model)
+            {
+                var discount = (int)((1 - product.Price / product.OriginalPrice) * 100);
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <a href="/Product/Details/@product.Id">
+                            <img src="@product.ImageUrl" alt="@product.Name" loading="lazy" />
+                        </a>
+                        <span class="badge-discount">@discount% OFF</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">@product.Brand</span>
+                        <h3 class="product-name"><a href="/Product/Details/@product.Id">@product.Name</a></h3>
+                        <div class="product-price">
+                            <span class="price-now">₹@product.Price.ToString("N0")</span>
+                            <span class="price-old">₹@product.OriginalPrice.ToString("N0")</span>
+                        </div>
+                        <form action="/Cart/AddToCart" method="post">
+                            <input type="hidden" name="productId" value="@product.Id" />
+                            <input type="hidden" name="size" value="@product.Sizes.Split(',')[0]" />
+                            <input type="hidden" name="color" value="@product.Colors.Split(',')[0]" />
+                            <button type="submit" class="btn-add-cart">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

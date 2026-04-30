@@ -1,0 +1,87 @@
+@model List<FashionHub.Models.Product>
+@{
+    ViewData["Title"] = "Manage Products";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-page-header">
+    <h1>📦 Products (@Model.Count)</h1>
+    <a href="/Admin/AddProduct" class="btn-admin-primary">➕ Add New Product</a>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="admin-alert">@TempData["Success"]</div>
+}
+
+<div class="admin-table-wrap">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr class="@(product.Stock == 0 ? "sold-out-row" : "")">
+                    <td><img src="@product.ImageUrl" alt="" class="table-product-img" /></td>
+                    <td>
+                        <strong>@product.Name</strong><br/>
+                        <small>@product.Brand</small>
+                    </td>
+                    <td><span class="cat-tag">@product.Category</span></td>
+                    <td>
+                        <strong>₹@product.Price.ToString("N0")</strong><br/>
+                        <small style="text-decoration:line-through;color:#999">₹@product.OriginalPrice.ToString("N0")</small>
+                    </td>
+                    <td>
+                        @if (product.Stock == 0)
+                        {
+                            <span class="stock-badge out">SOLD OUT</span>
+                        }
+                        else
+                        {
+                            <span class="stock-badge in">@product.Stock items</span>
+                        }
+                    </td>
+                    <td>
+                        @if (product.IsFeatured)
+                        {
+                            <span class="featured-badge">⭐ Featured</span>
+                        }
+                    </td>
+                    <td>
+                        <div class="action-group">
+                            <a href="/Admin/EditProduct/@product.Id" class="btn-edit">✏️ Edit</a>
+
+                            <form action="/Admin/ToggleSoldOut" method="post" style="display:inline">
+                                <input type="hidden" name="id" value="@product.Id" />
+                                @if (product.Stock == 0)
+                                {
+                                    <button type="submit" class="btn-instock">✅ In Stock</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn-soldout">❌ Sold Out</button>
+                                }
+                            </form>
+
+                            <form action="/Admin/DeleteProduct" method="post" style="display:inline"
+                                  onsubmit="return confirm('Delete this product?')">
+                                <input type="hidden" name="id" value="@product.Id" />
+                                <button type="submit" class="btn-delete">🗑️ Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

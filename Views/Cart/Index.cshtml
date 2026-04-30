@@ -1,0 +1,76 @@
+@model List<FashionHub.Models.CartItem>
+@{
+    ViewData["Title"] = "Shopping Cart";
+    var total = Model.Sum(c => c.Product!.Price * c.Quantity);
+    var savings = Model.Sum(c => (c.Product!.OriginalPrice - c.Product.Price) * c.Quantity);
+}
+
+<div class="cart-container">
+    <h1 class="cart-title">🛍️ My Cart (@Model.Count items)</h1>
+
+    @if (!Model.Any())
+    {
+        <div class="cart-empty">
+            <div class="empty-icon">🛒</div>
+            <h2>Your cart is empty!</h2>
+            <p>Add some amazing products to your cart</p>
+            <a href="/" class="btn-primary">Continue Shopping</a>
+        </div>
+    }
+    else
+    {
+        <div class="cart-layout">
+            <!-- Cart Items -->
+            <div class="cart-items">
+                @foreach (var item in Model)
+                {
+                    <div class="cart-item">
+                        <img src="@item.Product!.ImageUrl" alt="@item.Product.Name" />
+                        <div class="cart-item-info">
+                            <span class="cart-item-brand">@item.Product.Brand</span>
+                            <h3>@item.Product.Name</h3>
+                            <div class="cart-item-meta">
+                                <span>Size: <strong>@item.SelectedSize</strong></span>
+                                <span>Color: <strong>@item.SelectedColor</strong></span>
+                                <span>Qty: <strong>@item.Quantity</strong></span>
+                            </div>
+                            <div class="cart-item-price">
+                                <span class="price-now">₹@item.Product.Price.ToString("N0")</span>
+                                <span class="price-old">₹@item.Product.OriginalPrice.ToString("N0")</span>
+                            </div>
+                        </div>
+                        <form action="/Cart/RemoveFromCart" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="remove-btn"><i class="fas fa-trash"></i></button>
+                        </form>
+                    </div>
+                }
+            </div>
+
+            <!-- Price Summary -->
+            <div class="cart-summary">
+                <h3>Price Details</h3>
+                <div class="summary-row">
+                    <span>Price (@Model.Count items)</span>
+                    <span>₹@Model.Sum(c => c.Product!.OriginalPrice * c.Quantity).ToString("N0")</span>
+                </div>
+                <div class="summary-row savings">
+                    <span>Discount</span>
+                    <span>-₹@savings.ToString("N0")</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery Charges</span>
+                    <span class="free">FREE</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-row total">
+                    <span>Total Amount</span>
+                    <span>₹@total.ToString("N0")</span>
+                </div>
+                <p class="savings-msg">🎉 You save ₹@savings.ToString("N0") on this order!</p>
+                <a href="/Cart/Checkout" class="btn-checkout">Proceed to Checkout →</a>
+                <a href="/" class="continue-shopping">← Continue Shopping</a>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,46 @@
+@model List<FashionHub.Models.Product>
+@{
+    ViewData["Title"] = ViewBag.Category ?? "All Products";
+}
+
+<div class="search-page">
+    <div class="search-header">
+        <h2>@(ViewBag.Category ?? "All") Collection (@Model.Count products)</h2>
+    </div>
+    <div class="products-grid">
+        @foreach (var product in Model)
+        {
+            var discount = (int)((1 - product.Price / product.OriginalPrice) * 100);
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <a href="/Product/Details/@product.Id">
+                        <img src="@product.ImageUrl" alt="@product.Name" loading="lazy" />
+                    </a>
+                    <span class="badge-discount">@discount% OFF</span>
+                </div>
+                <div class="product-info">
+                    <span class="product-brand">@product.Brand</span>
+                    <h3 class="product-name"><a href="/Product/Details/@product.Id">@product.Name</a></h3>
+                    <div class="product-rating">
+                        <div class="stars">
+                            @for (int i = 1; i <= 5; i++) {
+                                <i class="fas fa-star @(i <= product.Rating ? "filled" : "")"></i>
+                            }
+                        </div>
+                        <span>(@product.ReviewCount.ToString("N0"))</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="price-now">₹@product.Price.ToString("N0")</span>
+                        <span class="price-old">₹@product.OriginalPrice.ToString("N0")</span>
+                    </div>
+                    <form action="/Cart/AddToCart" method="post">
+                        <input type="hidden" name="productId" value="@product.Id" />
+                        <input type="hidden" name="size" value="@product.Sizes.Split(',')[0]" />
+                        <input type="hidden" name="color" value="@product.Colors.Split(',')[0]" />
+                        <button type="submit" class="btn-add-cart">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>

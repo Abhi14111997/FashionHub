@@ -1,0 +1,99 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-page-header">
+    <h1>📊 Dashboard</h1>
+    <span>Welcome back, Admin!</span>
+</div>
+
+<!-- STATS -->
+<div class="stats-grid">
+    <div class="stat-card blue">
+        <div class="stat-icon">📦</div>
+        <div class="stat-info">
+            <h3>@ViewBag.TotalProducts</h3>
+            <p>Total Products</p>
+        </div>
+    </div>
+    <div class="stat-card green">
+        <div class="stat-icon">🛒</div>
+        <div class="stat-info">
+            <h3>@ViewBag.TotalOrders</h3>
+            <p>Total Orders</p>
+        </div>
+    </div>
+    <div class="stat-card purple">
+        <div class="stat-icon">💰</div>
+        <div class="stat-info">
+            <h3>₹@((ViewBag.TotalRevenue ?? 0m).ToString("N0"))</h3>
+            <p>Total Revenue</p>
+        </div>
+    </div>
+    <div class="stat-card red">
+        <div class="stat-icon">❌</div>
+        <div class="stat-info">
+            <h3>@ViewBag.OutOfStock</h3>
+            <p>Out of Stock</p>
+        </div>
+    </div>
+</div>
+
+<!-- QUICK ACTIONS -->
+<div class="quick-actions">
+    <h2>⚡ Quick Actions</h2>
+    <div class="action-btns">
+        <a href="/Admin/AddProduct" class="action-btn-card">
+            <span>➕</span>
+            <p>Add Product</p>
+        </a>
+        <a href="/Admin/Products" class="action-btn-card">
+            <span>📦</span>
+            <p>Manage Products</p>
+        </a>
+        <a href="/Admin/Orders" class="action-btn-card">
+            <span>🛒</span>
+            <p>View Orders</p>
+        </a>
+        <a href="/" class="action-btn-card">
+            <span>🌐</span>
+            <p>View Website</p>
+        </a>
+    </div>
+</div>
+
+<!-- RECENT ORDERS -->
+<div class="recent-section">
+    <h2>🕐 Recent Orders</h2>
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.RecentOrders != null)
+            {
+                foreach (FashionHub.Models.Order order in ViewBag.RecentOrders)
+                {
+                    <tr>
+                        <td><strong>#FH@order.Id.ToString("D6")</strong></td>
+                        <td>@order.CustomerName</td>
+                        <td>₹@order.TotalAmount.ToString("N0")</td>
+                        <td><span class="status-badge @order.Status.ToLower()">@order.Status</span></td>
+                        <td>@order.OrderDate.ToString("dd MMM yyyy")</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr><td colspan="5" style="text-align:center; color:#888">No orders yet</td></tr>
+            }
+        </tbody>
+    </table>
+</div>

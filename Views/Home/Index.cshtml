@@ -1,0 +1,187 @@
+@model List<FashionHub.Models.Product>
+@{
+    ViewData["Title"] = "FashionHub - India's Best Fashion Store";
+}
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-slides">
+        <div class="hero-slide active" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)">
+            <div class="hero-content">
+                <span class="hero-tag">New Collection 2024</span>
+                <h1>Redefine Your<br><em>Style Story</em></h1>
+                <p>Discover 10,000+ trending styles from top brands</p>
+                <div class="hero-btns">
+                    <a href="/Product?category=Women" class="btn-primary">Shop Women</a>
+                    <a href="/Product?category=Men" class="btn-outline">Shop Men</a>
+                </div>
+                <div class="hero-stats">
+                    <div><strong>50L+</strong><span>Happy Customers</span></div>
+                    <div><strong>10K+</strong><span>Styles</span></div>
+                    <div><strong>500+</strong><span>Brands</span></div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=700&fit=crop" alt="Fashion" />
+                <div class="hero-badge">UP TO<br><strong>70% OFF</strong></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CATEGORY CARDS -->
+<section class="categories-section">
+    <div class="section-container">
+        <div class="section-header">
+            <h2>Shop by Category</h2>
+            <p>Find your perfect style</p>
+        </div>
+        <div class="category-cards">
+            <a href="/Product?category=Women" class="cat-card women-card">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=300&h=400&fit=crop" alt="Women" />
+                <div class="cat-card-info">
+                    <h3>Women</h3>
+                    <span>3,200+ Styles</span>
+                </div>
+            </a>
+            <a href="/Product?category=Men" class="cat-card men-card">
+                <img src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=300&h=400&fit=crop" alt="Men" />
+                <div class="cat-card-info">
+                    <h3>Men</h3>
+                    <span>2,800+ Styles</span>
+                </div>
+            </a>
+            <a href="/Product?category=Kids" class="cat-card kids-card">
+                <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=300&h=400&fit=crop" alt="Kids" />
+                <div class="cat-card-info">
+                    <h3>Kids</h3>
+                    <span>1,500+ Styles</span>
+                </div>
+            </a>
+            <a href="/Product?category=Footwear" class="cat-card foot-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=400&fit=crop" alt="Footwear" />
+                <div class="cat-card-info">
+                    <h3>Footwear</h3>
+                    <span>900+ Styles</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- OFFER BANNERS -->
+<section class="offer-banners">
+    <div class="section-container">
+        <div class="banner-grid">
+            <div class="banner-card banner-pink">
+                <div class="banner-text">
+                    <span>Women's Special</span>
+                    <h3>Ethnic Wear<br>From ₹499</h3>
+                    <a href="/Product?category=Women">Shop Now →</a>
+                </div>
+                <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=200&h=200&fit=crop" alt="" />
+            </div>
+            <div class="banner-card banner-blue">
+                <div class="banner-text">
+                    <span>Men's Sale</span>
+                    <h3>Top Brands<br>Up to 60% Off</h3>
+                    <a href="/Product?category=Men">Shop Now →</a>
+                </div>
+                <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=200&h=200&fit=crop" alt="" />
+            </div>
+            <div class="banner-card banner-green">
+                <div class="banner-text">
+                    <span>Footwear Fest</span>
+                    <h3>Sneakers &amp;<br>Heels Upto 50%</h3>
+                    <a href="/Product?category=Footwear">Shop Now →</a>
+                </div>
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop" alt="" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="products-section">
+    <div class="section-container">
+        <div class="section-header">
+            <h2>🔥 Trending Now</h2>
+            <a href="/Home/Search" class="view-all">View All →</a>
+        </div>
+        <div class="products-grid">
+            @foreach (var product in Model)
+            {
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <a href="/Product/Details/@product.Id">
+                            <img src="@product.ImageUrl" alt="@product.Name" loading="lazy" />
+                        </a>
+                        <div class="product-badges">
+                            @{
+                                var discount = (int)((1 - product.Price / product.OriginalPrice) * 100);
+                            }
+                            <span class="badge-discount">@discount% OFF</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Wishlist"><i class="fas fa-heart"></i></button>
+                            <a href="/Product/Details/@product.Id" class="action-btn quick-view-btn" title="Quick View"><i class="fas fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">@product.Brand</span>
+                        <h3 class="product-name"><a href="/Product/Details/@product.Id">@product.Name</a></h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <i class="fas fa-star @(i <= product.Rating ? "filled" : "")"></i>
+                                }
+                            </div>
+                            <span>(@product.ReviewCount.ToString("N0"))</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-now">₹@product.Price.ToString("N0")</span>
+                            <span class="price-old">₹@product.OriginalPrice.ToString("N0")</span>
+                        </div>
+                        <form action="/Cart/AddToCart" method="post" class="add-cart-form">
+                            <input type="hidden" name="productId" value="@product.Id" />
+                            <input type="hidden" name="size" value="@product.Sizes.Split(',')[1]" />
+                            <input type="hidden" name="color" value="@product.Colors.Split(',')[0]" />
+                            <button type="submit" class="btn-add-cart">
+                                <i class="fas fa-shopping-bag"></i> Add to Cart
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us">
+    <div class="section-container">
+        <div class="why-grid">
+            <div class="why-card">
+                <i class="fas fa-shipping-fast"></i>
+                <h4>Free Delivery</h4>
+                <p>On orders above ₹999</p>
+            </div>
+            <div class="why-card">
+                <i class="fas fa-undo-alt"></i>
+                <h4>Easy Returns</h4>
+                <p>30 days hassle-free returns</p>
+            </div>
+            <div class="why-card">
+                <i class="fas fa-shield-alt"></i>
+                <h4>100% Genuine</h4>
+                <p>Original brand products only</p>
+            </div>
+            <div class="why-card">
+                <i class="fas fa-headset"></i>
+                <h4>24/7 Support</h4>
+                <p>Always here to help you</p>
+            </div>
+        </div>
+    </div>
+</section>

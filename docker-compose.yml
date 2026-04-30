@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+
+  # SQL Server Database
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: fashionhub-db
+    environment:
+      SA_PASSWORD: "FashionHub@123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqldata:/var/opt/mssql
+    restart: unless-stopped
+
+  # .NET Web App
+  webapp:
+    build: .
+    container_name: fashionhub-app
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=FashionHubDB;User Id=sa;Password=FashionHub@123;TrustServerCertificate=True
+    depends_on:
+      - sqlserver
+    restart: unless-stopped
+
+volumes:
+  sqldata:

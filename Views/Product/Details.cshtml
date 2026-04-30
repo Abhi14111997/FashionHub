@@ -1,0 +1,171 @@
+@model FashionHub.Models.Product
+@{
+    ViewData["Title"] = Model.Name;
+    var sizes = Model.Sizes.Split(',');
+    var colors = Model.Colors.Split(',');
+    var discount = (int)((1 - Model.Price / Model.OriginalPrice) * 100);
+}
+
+<div class="breadcrumb">
+    <a href="/">Home</a> › <a href="/Product?category=@Model.Category">@Model.Category</a> › @Model.Name
+</div>
+
+<div class="product-detail-container">
+    <!-- Images -->
+    <div class="product-detail-images">
+        <div class="main-image">
+            <img src="@Model.ImageUrl" alt="@Model.Name" id="mainImg" />
+            <span class="detail-discount-badge">@discount% OFF</span>
+        </div>
+        <div class="thumb-images">
+            <img src="@Model.ImageUrl" alt="" class="thumb active" onclick="changeImg(this)" />
+            <img src="@Model.ImageUrl.Replace("w=400","w=400&sat=-50")" alt="" class="thumb" onclick="changeImg(this)" />
+            <img src="@Model.ImageUrl.Replace("fit=crop","fit=crop&flip=true")" alt="" class="thumb" onclick="changeImg(this)" />
+        </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product-detail-info">
+        <span class="detail-brand">@Model.Brand</span>
+        <h1 class="detail-title">@Model.Name</h1>
+
+        <div class="detail-rating">
+            <div class="stars-detail">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <i class="fas fa-star @(i <= Model.Rating ? "filled" : "")"></i>
+                }
+            </div>
+            <span><strong>@Model.Rating</strong> (@Model.ReviewCount.ToString("N0") reviews)</span>
+        </div>
+
+        <div class="detail-price-block">
+            <span class="detail-price">₹@Model.Price.ToString("N0")</span>
+            <span class="detail-original">₹@Model.OriginalPrice.ToString("N0")</span>
+            <span class="detail-save">You save ₹@((Model.OriginalPrice - Model.Price).ToString("N0"))!</span>
+        </div>
+
+        <p class="detail-inclusive">Inclusive of all taxes | Free delivery</p>
+
+        <!-- Size Selector -->
+        <div class="selector-group">
+            <label>Select Size:</label>
+            <div class="size-options" id="sizeOptions">
+                @foreach (var size in sizes)
+                {
+                    <button type="button" class="size-btn" onclick="selectSize(this, '@size.Trim()')">@size.Trim()</button>
+                }
+            </div>
+            <a href="#" class="size-guide">Size Guide →</a>
+        </div>
+
+        <!-- Color Selector -->
+        <div class="selector-group">
+            <label>Select Color:</label>
+            <div class="color-options" id="colorOptions">
+                @foreach (var color in colors)
+                {
+                    <button type="button" class="color-btn" onclick="selectColor(this, '@color.Trim()')">@color.Trim()</button>
+                }
+            </div>
+        </div>
+
+        <!-- Add to Cart -->
+        <form action="/Cart/AddToCart" method="post" class="detail-cart-form" id="addCartForm">
+            <input type="hidden" name="productId" value="@Model.Id" />
+            <input type="hidden" name="size" value="@sizes[0].Trim()" id="selectedSize" />
+            <input type="hidden" name="color" value="@colors[0].Trim()" id="selectedColor" />
+            <input type="hidden" name="quantity" value="1" />
+            <div class="detail-btns">
+                <button type="submit" class="btn-cart-detail">
+                    <i class="fas fa-shopping-bag"></i> Add to Cart
+                </button>
+                <button type="button" class="btn-buy-now" onclick="buyNow()">
+                    ⚡ Buy Now
+                </button>
+            </div>
+        </form>
+
+        <!-- Offers -->
+        <div class="product-offers">
+            <h4>🎁 Available Offers</h4>
+            <ul>
+                <li>✅ 10% off on HDFC Bank Cards (Max ₹1500)</li>
+                <li>✅ Extra 5% off with FashionHub Pay</li>
+                <li>✅ No Cost EMI on orders above ₹3000</li>
+                <li>✅ Free delivery on this item</li>
+            </ul>
+        </div>
+
+        <!-- Delivery -->
+        <div class="delivery-check">
+            <input type="text" placeholder="Enter pincode to check delivery" />
+            <button>Check</button>
+        </div>
+
+        <!-- Product Details -->
+        <div class="product-specs">
+            <h4>Product Details</h4>
+            <table>
+                <tr><td>Brand</td><td>@Model.Brand</td></tr>
+                <tr><td>Category</td><td>@Model.Category</td></tr>
+                <tr><td>Available Sizes</td><td>@Model.Sizes</td></tr>
+                <tr><td>Colors</td><td>@Model.Colors</td></tr>
+                <tr><td>Stock</td><td>@Model.Stock items left</td></tr>
+            </table>
+            <p class="product-desc">@Model.Description</p>
+        </div>
+    </div>
+</div>
+
+<!-- Related Products -->
+@if (ViewBag.RelatedProducts != null)
+{
+    <section class="related-products">
+        <div class="section-container">
+            <h2>Similar Products</h2>
+            <div class="products-grid">
+                @foreach (FashionHub.Models.Product rp in ViewBag.RelatedProducts)
+                {
+                    <div class="product-card">
+                        <div class="product-img-wrap">
+                            <a href="/Product/Details/@rp.Id">
+                                <img src="@rp.ImageUrl" alt="@rp.Name" loading="lazy" />
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-brand">@rp.Brand</span>
+                            <h3 class="product-name"><a href="/Product/Details/@rp.Id">@rp.Name</a></h3>
+                            <div class="product-price">
+                                <span class="price-now">₹@rp.Price.ToString("N0")</span>
+                                <span class="price-old">₹@rp.OriginalPrice.ToString("N0")</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+
+<script>
+function selectSize(btn, size) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('selectedSize').value = size;
+}
+function selectColor(btn, color) {
+    document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('selectedColor').value = color;
+}
+function changeImg(thumb) {
+    document.getElementById('mainImg').src = thumb.src;
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+}
+function buyNow() {
+    document.getElementById('addCartForm').action = '/Cart/Checkout';
+    document.getElementById('addCartForm').submit();
+}
+</script>

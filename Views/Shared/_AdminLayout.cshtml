@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — FashionHub Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'DM Sans',sans-serif; background:#f4f6f9; display:flex; min-height:100vh; }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 240px;
+            background: #1a1a2e;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+        }
+        .sidebar-logo {
+            padding: 24px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 20px;
+            font-weight: 700;
+            color: #FF3F6C;
+        }
+        .sidebar-logo span { color: white; font-size: 12px; display: block; font-weight: 400; margin-top: 2px; opacity: 0.6; }
+        .sidebar-nav { padding: 16px 0; flex: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255,63,108,0.15);
+            color: #FF3F6C;
+            border-left-color: #FF3F6C;
+        }
+        .nav-item i { width: 18px; text-align: center; }
+        .nav-section { padding: 16px 20px 8px; font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 1px; }
+        .sidebar-footer { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-footer a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; }
+        .sidebar-footer a:hover { color: white; }
+
+        /* MAIN */
+        .admin-main { margin-left: 240px; flex: 1; padding: 24px; min-height: 100vh; }
+
+        /* TOP BAR */
+        .admin-topbar {
+            background: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .admin-topbar h2 { font-size: 18px; font-weight: 600; }
+        .admin-topbar-right { display: flex; align-items: center; gap: 12px; font-size: 13px; color: #888; }
+
+        /* PAGE HEADER */
+        .admin-page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .admin-page-header h1 { font-size: 24px; font-weight: 700; }
+
+        /* ALERT */
+        .admin-alert { background: #e8f5e9; color: #2e7d32; padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; font-weight: 500; border-left: 4px solid #4caf50; }
+
+        /* STATS */
+        .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 24px; }
+        .stat-card { background: white; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid; }
+        .stat-card.blue { border-color: #2196f3; }
+        .stat-card.green { border-color: #4caf50; }
+        .stat-card.purple { border-color: #9c27b0; }
+        .stat-card.red { border-color: #f44336; }
+        .stat-icon { font-size: 32px; }
+        .stat-info h3 { font-size: 26px; font-weight: 700; }
+        .stat-info p { font-size: 13px; color: #888; }
+
+        /* QUICK ACTIONS */
+        .quick-actions { background: white; border-radius: 12px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .quick-actions h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+        .action-btns { display: flex; gap: 12px; }
+        .action-btn-card {
+            flex: 1;
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.2s;
+        }
+        .action-btn-card:hover { border-color: #FF3F6C; background: #fff5f7; color: #FF3F6C; }
+        .action-btn-card span { font-size: 28px; display: block; margin-bottom: 8px; }
+        .action-btn-card p { font-size: 13px; font-weight: 600; }
+
+        /* RECENT */
+        .recent-section { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .recent-section h2 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+
+        /* TABLE */
+        .admin-table-wrap { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow-x: auto; }
+        .admin-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .admin-table th { background: #f8f9fa; padding: 12px 14px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #666; }
+        .admin-table td { padding: 12px 14px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+        .admin-table tr:last-child td { border-bottom: none; }
+        .admin-table tr:hover td { background: #fafafa; }
+        .sold-out-row td { opacity: 0.6; }
+        .table-product-img { width: 50px; height: 60px; object-fit: cover; border-radius: 6px; }
+
+        /* BADGES */
+        .stock-badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+        .stock-badge.out { background: #ffebee; color: #c62828; }
+        .stock-badge.in { background: #e8f5e9; color: #2e7d32; }
+        .cat-tag { background: #e3f2fd; color: #1565c0; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .featured-badge { background: #fff8e1; color: #f57f17; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .status-badge.pending { background: #fff3e0; color: #e65100; }
+        .status-badge.confirmed { background: #e3f2fd; color: #1565c0; }
+        .status-badge.shipped { background: #f3e5f5; color: #6a1b9a; }
+        .status-badge.delivered { background: #e8f5e9; color: #2e7d32; }
+        .status-badge.cancelled { background: #ffebee; color: #c62828; }
+
+        /* ACTION BTNS */
+        .action-group { display: flex; gap: 6px; flex-wrap: wrap; }
+        .btn-edit, .btn-soldout, .btn-instock, .btn-delete, .btn-update {
+            padding: 5px 10px; border-radius: 5px; font-size: 12px; font-weight: 600;
+            border: none; cursor: pointer; text-decoration: none; display: inline-block;
+        }
+        .btn-edit { background: #e3f2fd; color: #1565c0; }
+        .btn-soldout { background: #ffebee; color: #c62828; }
+        .btn-instock { background: #e8f5e9; color: #2e7d32; }
+        .btn-delete { background: #ffebee; color: #c62828; }
+        .btn-update { background: #FF3F6C; color: white; }
+        .btn-admin-primary { background: #FF3F6C; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; border: none; cursor: pointer; display: inline-block; }
+        .btn-admin-primary:hover { background: #d4325a; }
+        .btn-admin-outline { background: white; color: #FF3F6C; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; border: 2px solid #FF3F6C; display: inline-block; }
+
+        /* FORM */
+        .admin-form-card { background: white; border-radius: 12px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); max-width: 800px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #555; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; border: 1px solid #dee2e6; border-radius: 8px;
+            padding: 10px 14px; font-size: 14px; font-family: inherit;
+            outline: none; transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #FF3F6C; }
+        .form-group small { font-size: 11px; color: #888; margin-top: 4px; display: block; }
+        .form-check { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 14px; }
+        .form-check input { width: auto; }
+        .form-actions { display: flex; gap: 12px; margin-top: 8px; }
+        .img-preview { margin-bottom: 16px; }
+        .img-preview img { width: 120px; height: 140px; object-fit: cover; border-radius: 8px; border: 2px solid #dee2e6; }
+        .img-preview p { font-size: 12px; color: #888; margin-top: 4px; }
+        .status-select { padding: 5px 8px; border: 1px solid #dee2e6; border-radius: 5px; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <div class="sidebar-logo">
+        👗 FashionHub
+        <span>Admin Panel</span>
+    </div>
+    <nav class="sidebar-nav">
+        <div class="nav-section">Main</div>
+        <a href="/Admin" class="nav-item @(ViewData["Title"]?.ToString() == "Admin Dashboard" ? "active" : "")">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+        </a>
+
+        <div class="nav-section">Catalog</div>
+        <a href="/Admin/Products" class="nav-item @(ViewData["Title"]?.ToString()?.Contains("Product") == true ? "active" : "")">
+            <i class="fas fa-box"></i> Products
+        </a>
+        <a href="/Admin/AddProduct" class="nav-item">
+            <i class="fas fa-plus"></i> Add Product
+        </a>
+
+        <div class="nav-section">Sales</div>
+        <a href="/Admin/Orders" class="nav-item @(ViewData["Title"]?.ToString()?.Contains("Order") == true ? "active" : "")">
+            <i class="fas fa-shopping-cart"></i> Orders
+        </a>
+    </nav>
+    <div class="sidebar-footer">
+        <a href="/"><i class="fas fa-external-link-alt"></i> View Website →</a>
+    </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="admin-main">
+    <div class="admin-topbar">
+        <h2>@ViewData["Title"]</h2>
+        <div class="admin-topbar-right">
+            <span>📅 @DateTime.Now.ToString("dd MMM yyyy")</span>
+            <span>👤 Admin</span>
+        </div>
+    </div>
+
+    @RenderBody()
+</main>
+
+</body>
+</html>

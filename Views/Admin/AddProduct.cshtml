@@ -1,0 +1,115 @@
+@model FashionHub.Models.Product
+@{
+    bool isEdit = Model.Id > 0;
+    ViewData["Title"] = isEdit ? "Edit Product" : "Add Product";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-page-header">
+    <h1>@(isEdit ? "✏️ Edit Product" : "➕ Add New Product")</h1>
+    <a href="/Admin/Products" class="btn-admin-outline">← Back to Products</a>
+</div>
+
+<div class="admin-form-card">
+    <form action="@(isEdit ? "/Admin/EditProduct" : "/Admin/AddProduct")" method="post">
+        @if (isEdit)
+        {
+            <input type="hidden" name="Id" value="@Model.Id" />
+        }
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Product Name *</label>
+                <input type="text" name="Name" value="@Model.Name" placeholder="e.g. Classic White T-Shirt" required />
+            </div>
+            <div class="form-group">
+                <label>Brand *</label>
+                <input type="text" name="Brand" value="@Model.Brand" placeholder="e.g. FashionHub" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Description *</label>
+            <textarea name="Description" rows="3" placeholder="Product description...">@Model.Description</textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Category *</label>
+                <select name="Category" required>
+                    <option value="">Select Category</option>
+                    <option value="Men" selected="@(Model.Category == "Men")">Men</option>
+                    <option value="Women" selected="@(Model.Category == "Women")">Women</option>
+                    <option value="Kids" selected="@(Model.Category == "Kids")">Kids</option>
+                    <option value="Footwear" selected="@(Model.Category == "Footwear")">Footwear</option>
+                    <option value="Accessories" selected="@(Model.Category == "Accessories")">Accessories</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Stock Quantity *</label>
+                <input type="number" name="Stock" value="@Model.Stock" placeholder="e.g. 100" required min="0" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Selling Price (₹) *</label>
+                <input type="number" name="Price" value="@Model.Price" placeholder="e.g. 999" required min="0" step="0.01" />
+            </div>
+            <div class="form-group">
+                <label>Original Price (₹) *</label>
+                <input type="number" name="OriginalPrice" value="@Model.OriginalPrice" placeholder="e.g. 1999" required min="0" step="0.01" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Image URL *</label>
+            <input type="text" name="ImageUrl" value="@Model.ImageUrl" placeholder="https://images.unsplash.com/..." required />
+            <small>💡 Unsplash se free images milti hain: https://unsplash.com</small>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <div class="img-preview">
+                <img src="@Model.ImageUrl" alt="Preview" />
+                <p>Image Preview</p>
+            </div>
+        }
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Available Sizes</label>
+                <input type="text" name="Sizes" value="@Model.Sizes" placeholder="S,M,L,XL,XXL" />
+                <small>Comma se alag karo: S,M,L,XL</small>
+            </div>
+            <div class="form-group">
+                <label>Available Colors</label>
+                <input type="text" name="Colors" value="@Model.Colors" placeholder="Red,Blue,Black" />
+                <small>Comma se alag karo: Red,Blue,Black</small>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Rating (1-5)</label>
+                <input type="number" name="Rating" value="@Model.Rating" placeholder="4.5" min="1" max="5" step="0.1" />
+            </div>
+            <div class="form-group">
+                <label>Review Count</label>
+                <input type="number" name="ReviewCount" value="@Model.ReviewCount" placeholder="100" min="0" />
+            </div>
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" name="IsFeatured" value="true" id="featured" @(Model.IsFeatured ? "checked" : "") />
+            <label for="featured">⭐ Featured Product (Homepage pe dikhega)</label>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-admin-primary">
+                @(isEdit ? "💾 Update Product" : "➕ Add Product")
+            </button>
+            <a href="/Admin/Products" class="btn-admin-outline">Cancel</a>
+        </div>
+    </form>
+</div>

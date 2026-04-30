@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FashionHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+<!-- TOP ANNOUNCEMENT BAR -->
+<div class="announcement-bar">
+    <span>🎉 FREE DELIVERY on orders above ₹999 | Use code <strong>FASHION20</strong> for 20% off!</span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a class="nav-logo" href="/">
+            <span class="logo-icon">👗</span>
+            <span class="logo-text">Fashion<em>Hub</em></span>
+        </a>
+
+        <form class="nav-search" action="/Home/Search" method="get">
+            <select name="category" class="search-cat">
+                <option value="">All</option>
+                <option value="Men">Men</option>
+                <option value="Women">Women</option>
+                <option value="Kids">Kids</option>
+                <option value="Footwear">Footwear</option>
+                <option value="Accessories">Accessories</option>
+            </select>
+            <input type="text" name="q" placeholder="Search for clothes, brands..." />
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+
+        <div class="nav-actions">
+            <a href="/Cart" class="nav-btn cart-btn">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Cart</span>
+            </a>
+            <a href="#" class="nav-btn">
+                <i class="fas fa-heart"></i>
+                <span>Wishlist</span>
+            </a>
+            <a href="#" class="nav-btn">
+                <i class="fas fa-user"></i>
+                <span>Login</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- CATEGORY NAV -->
+    <div class="cat-nav">
+        <div class="cat-nav-inner">
+            <a href="/Product?category=Men">👔 Men</a>
+            <a href="/Product?category=Women">👗 Women</a>
+            <a href="/Product?category=Kids">🧒 Kids</a>
+            <a href="/Product?category=Footwear">👟 Footwear</a>
+            <a href="/Product?category=Accessories">👜 Accessories</a>
+            <a href="/Home/Search?sort=newest" class="hot-tag">🔥 New Arrivals</a>
+            <a href="/Home/Search?maxPrice=999" class="sale-tag">🏷️ Under ₹999</a>
+        </div>
+    </div>
+</nav>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert-success">✅ @TempData["Success"]</div>
+}
+
+<main>
+    @RenderBody()
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>👗 FashionHub</h3>
+            <p>India's most loved fashion destination. Trendy styles, unbeatable prices.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Men</h4>
+            <a href="/Product?category=Men">T-Shirts</a>
+            <a href="/Product?category=Men">Shirts</a>
+            <a href="/Product?category=Men">Jeans</a>
+            <a href="/Product?category=Men">Jackets</a>
+        </div>
+        <div class="footer-links">
+            <h4>Women</h4>
+            <a href="/Product?category=Women">Dresses</a>
+            <a href="/Product?category=Women">Tops</a>
+            <a href="/Product?category=Women">Kurtis</a>
+            <a href="/Product?category=Women">Jeans</a>
+        </div>
+        <div class="footer-links">
+            <h4>Help</h4>
+            <a href="#">Track Order</a>
+            <a href="#">Returns</a>
+            <a href="#">Size Guide</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 FashionHub. All rights reserved. | Made with ❤️ in India</p>
+        <div class="payment-icons">
+            <span>💳 Visa</span><span>💳 Mastercard</span><span>📱 UPI</span><span>🏦 NetBanking</span>
+        </div>
+    </div>
+</footer>
+
+<script src="~/js/site.js"></script>
+</body>
+</html>
